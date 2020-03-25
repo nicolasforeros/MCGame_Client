@@ -5,8 +5,10 @@
         <group>
             <file>file:/C:/Users/nikof/OneDrive/Documentos/NetBeansProjects/MulticastJuego/src/co/edu/autonoma/MC/ui/LoginWindow.java</file>
             <file>file:/C:/Users/nikof/OneDrive/Documentos/NetBeansProjects/MulticastJuego/src/co/edu/autonoma/MC/juego/bases/PPTGame.java</file>
+            <file>file:/C:/Users/nikof/OneDrive/Documentos/NetBeansProjects/MulticastJuego/src/co/edu/autonoma/MC/cliente/elements/Cliente.java</file>
             <file>file:/C:/Users/nikof/OneDrive/Documentos/NetBeansProjects/MulticastJuego/src/co/edu/autonoma/MC/ui/PPTWindow.java</file>
             <file>file:/C:/Users/nikof/OneDrive/Documentos/NetBeansProjects/MulticastJuego/src/co/edu/autonoma/MC/Main.java</file>
+            <file>file:/C:/Users/nikof/OneDrive/Documentos/NetBeansProjects/MulticastJuego/src/co/edu/autonoma/MC/ui/MundoWindow.java</file>
         </group>
     </open-files>
 </project-private>

@@ -5,6 +5,7 @@
  */
 package co.edu.autonoma.MC.ui;
 
+import co.edu.autonoma.MC.cliente.elements.Cliente;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,6 +18,7 @@ public class LoginWindow extends javax.swing.JFrame {
     
     /**
      * Creates new form Login
+     * @param cliente
      */
     public LoginWindow(Cliente cliente) {
         initComponents();

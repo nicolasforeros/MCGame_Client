@@ -5,6 +5,7 @@
  */
 package co.edu.autonoma.MC;
 
+import co.edu.autonoma.MC.cliente.elements.Cliente;
 import co.edu.autonoma.MC.ui.LoginWindow;
 
 /**
