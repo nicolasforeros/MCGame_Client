@@ -33,6 +33,8 @@ public class MundoWindow extends javax.swing.JFrame implements MCGame{
         labelJugadores = new javax.swing.JLabel();
         labelImgJugador = new javax.swing.JLabel();
         labelImgJugadora = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         panelMundo = new javax.swing.JPanel();
         panelChat = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -48,29 +50,24 @@ public class MundoWindow extends javax.swing.JFrame implements MCGame{
 
         tableJugadores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Nombre", "T", "Vidas"
+                "Nombre", "Tamaño"
             }
         ));
         jScrollPane1.setViewportView(tableJugadores);
@@ -84,6 +81,12 @@ public class MundoWindow extends javax.swing.JFrame implements MCGame{
 
         labelImgJugadora.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Jugadora.png"))); // NOI18N
 
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        jTextArea1.setRows(5);
+        jTextArea1.setText("Para regalar vidas a los\n jugadores escriba en el chat:");
+        jScrollPane3.setViewportView(jTextArea1);
+
         javax.swing.GroupLayout panelJugadoresLayout = new javax.swing.GroupLayout(panelJugadores);
         panelJugadores.setLayout(panelJugadoresLayout);
         panelJugadoresLayout.setHorizontalGroup(
@@ -91,30 +94,39 @@ public class MundoWindow extends javax.swing.JFrame implements MCGame{
             .addGroup(panelJugadoresLayout.createSequentialGroup()
                 .addGroup(panelJugadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelJugadoresLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
                         .addGroup(panelJugadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelJugadoresLayout.createSequentialGroup()
-                                .addComponent(labelImgJugador)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(labelImgJugadora))
-                            .addComponent(labelJugadores)))
+                                .addGap(39, 39, 39)
+                                .addGroup(panelJugadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelJugadoresLayout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(labelImgJugador)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(labelImgJugadora))
+                                    .addComponent(labelJugadores)))
+                            .addGroup(panelJugadoresLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(panelJugadoresLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jScrollPane3)))
+                .addContainerGap())
         );
         panelJugadoresLayout.setVerticalGroup(
             panelJugadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelJugadoresLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(labelJugadores)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addGroup(panelJugadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelJugadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(labelImgJugador)
                     .addComponent(labelImgJugadora))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         panelMundo.setBackground(new java.awt.Color(0, 153, 51));
@@ -160,11 +172,11 @@ public class MundoWindow extends javax.swing.JFrame implements MCGame{
                 .addGroup(panelChatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelChatLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(panelChatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(panelChatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane2)
                             .addGroup(panelChatLayout.createSequentialGroup()
                                 .addComponent(txtFielMsjeEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(18, 18, 18)
                                 .addComponent(btnEnviar))))
                     .addGroup(panelChatLayout.createSequentialGroup()
                         .addGap(67, 67, 67)
@@ -181,12 +193,12 @@ public class MundoWindow extends javax.swing.JFrame implements MCGame{
                     .addComponent(labelImgChat)
                     .addComponent(labelChat))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelChatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtFielMsjeEnviar)
                     .addComponent(btnEnviar))
-                .addContainerGap())
+                .addGap(24, 24, 24))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -205,7 +217,7 @@ public class MundoWindow extends javax.swing.JFrame implements MCGame{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelChat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                .addComponent(panelMundo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelMundo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
                 .addComponent(panelJugadores, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -220,6 +232,8 @@ public class MundoWindow extends javax.swing.JFrame implements MCGame{
     private javax.swing.JButton btnEnviar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel labelChat;
     private javax.swing.JLabel labelImgChat;
     private javax.swing.JLabel labelImgJugador;
