@@ -9,7 +9,7 @@ package co.edu.autonoma.MC.ui;
  *
  * @author Manuela Cardona
  */
-public class MundoWindow extends javax.swing.JFrame {
+public class MundoWindow extends javax.swing.JFrame implements MCGame{
 
     /**
      * Creates new form Principal
@@ -108,7 +108,7 @@ public class MundoWindow extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelJugadoresLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(labelJugadores)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(panelJugadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelImgJugador)
                     .addComponent(labelImgJugadora))
@@ -118,12 +118,13 @@ public class MundoWindow extends javax.swing.JFrame {
         );
 
         panelMundo.setBackground(new java.awt.Color(0, 153, 51));
+        panelMundo.setPreferredSize(new java.awt.Dimension(500, 500));
 
         javax.swing.GroupLayout panelMundoLayout = new javax.swing.GroupLayout(panelMundo);
         panelMundo.setLayout(panelMundoLayout);
         panelMundoLayout.setHorizontalGroup(
             panelMundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 511, Short.MAX_VALUE)
+            .addGap(0, 500, Short.MAX_VALUE)
         );
         panelMundoLayout.setVerticalGroup(
             panelMundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

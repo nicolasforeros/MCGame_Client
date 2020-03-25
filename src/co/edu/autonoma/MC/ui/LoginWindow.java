@@ -168,16 +168,26 @@ public class LoginWindow extends javax.swing.JFrame {
         boolean conexion = this.cliente.conectarAServidor();
         
         if(conexion){
-            Principal principal = new Principal(jugador);
+            Jugador jugadorLocal = this.cliente.crearJugador();
             
-            principal.setLocationRelativeTo(null);
-            principal.setVisible(true);
-            principal.iniciarEntrada();
-            //principal.iniciarJuego();
+            Mundo mundo = new Mundo(0,0,500,500);
+            mundo.addSprite(jugadorLocal);
+            
+            MundoWindow mundoWindow = new MundoWindow();
+            mundoWindow.setCliente(this.cliente);
+            mundoWindow.setMundo(mundo);
+            
+            mundo.setGraphicContainer(mundoWindow);
+            
+            mundoWindow.setTitle("Gnome Game");
+            mundoWindow.setLocationRelativeTo(this);
+            mundoWindow.setVisible(true);
+            
+            this.cliente.iniciarEntradaMulticast(mundoWindow);
             
             this.dispose();
         }else{
-            JOptionPane.showMessageDialog(this, "Error conectando con el servidor solicitado", "Conexión", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "LOGIN WINDOWS=> Error conectando con el servidor solicitado", "Conexión", JOptionPane.INFORMATION_MESSAGE);
         } 
         
     }//GEN-LAST:event_btnEntrarActionPerformed
