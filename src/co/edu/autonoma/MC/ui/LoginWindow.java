@@ -6,6 +6,7 @@
 package co.edu.autonoma.MC.ui;
 
 import co.edu.autonoma.MC.cliente.elements.Cliente;
+import co.edu.autonoma.MC.juego.elements.Jugador;
 import javax.swing.JOptionPane;
 
 /**
@@ -163,27 +164,32 @@ public class LoginWindow extends javax.swing.JFrame {
             return;
         }
         
-        boolean conexion = this.cliente.conectarAServidor();
+        boolean conexion = this.cliente.conectar();
         
         if(conexion){
-            Jugador jugadorLocal = this.cliente.crearJugador();
             
-            Mundo mundo = new Mundo(0,0,500,500);
-            mundo.addSprite(jugadorLocal);
+            Jugador jugadorLocal = this.cliente.crearJugador(nombreJugador);
             
-            MundoWindow mundoWindow = new MundoWindow();
-            mundoWindow.setCliente(this.cliente);
-            mundoWindow.setMundo(mundo);
-            
-            mundo.setGraphicContainer(mundoWindow);
-            
-            mundoWindow.setTitle("Gnome Game");
-            mundoWindow.setLocationRelativeTo(this);
-            mundoWindow.setVisible(true);
-            
-            this.cliente.iniciarEntradaMulticast(mundoWindow);
-            
-            this.dispose();
+            if(jugadorLocal!=null){
+                Mundo mundo = new Mundo(0,0,500,500);
+                mundo.addSprite(jugadorLocal);
+
+                MundoWindow mundoWindow = new MundoWindow();
+                mundoWindow.setCliente(this.cliente);
+                mundoWindow.setMundo(mundo);
+
+                mundo.setGraphicContainer(mundoWindow);
+
+                mundoWindow.setTitle("ROCK-PAPER-SCISSORS WORLD");
+                mundoWindow.setLocationRelativeTo(this);
+                mundoWindow.setVisible(true);
+
+                this.cliente.iniciarEntradaMulticast(mundoWindow);
+
+                this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(this, "LOGIN WINDOWS=> No se puede unir a la sesion actual, intente mas tarde");
+            }            
         }else{
             JOptionPane.showMessageDialog(this, "LOGIN WINDOWS=> Error conectando con el servidor solicitado", "Conexión", JOptionPane.INFORMATION_MESSAGE);
         } 
