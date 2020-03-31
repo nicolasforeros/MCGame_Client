@@ -5,8 +5,10 @@
  */
 package co.edu.autonoma.MC.cliente.networks;
 
+import co.edu.autonoma.MC.cliente.elements.Cliente;
 import co.edu.autonoma.MC.cliente.elements.InterpreteMensajesTCP;
 import co.edu.autonoma.MC.juego.bases.PPTGame;
+import co.edu.autonoma.MC.juego.elements.Jugador;
 import java.io.DataInputStream;
 import java.io.IOException;
 
@@ -23,6 +25,8 @@ public class RedEntradaTCP extends Thread{
     private DataInputStream in;
     private PPTGame juego;
     private InterpreteMensajesTCP interpreteMensajes;
+    private Jugador jugadorLocal;
+    private Cliente cliente;
     
     public RedEntradaTCP(){
         this.interpreteMensajes = new InterpreteMensajesTCP();
@@ -37,6 +41,8 @@ public class RedEntradaTCP extends Thread{
         System.out.println("RED ENTRADA TCP => empezando hilo");
         this.interpreteMensajes.setJuego(this.juego);
         this.interpreteMensajes.setNombreJugador(this.nombreJugador);
+        this.interpreteMensajes.setJugadorLocal(this.jugadorLocal);
+        this.interpreteMensajes.setCliente(this.cliente);
         
         while(true){
             
@@ -67,4 +73,11 @@ public class RedEntradaTCP extends Thread{
         this.nombreJugador = nombre;
     }
     
+    public void setJugadorLocal(Jugador jugadorLocal){
+        this.jugadorLocal = jugadorLocal;
+    }
+    
+    public void setCliente(Cliente cliente){
+        this.cliente = cliente;
+    }
 }

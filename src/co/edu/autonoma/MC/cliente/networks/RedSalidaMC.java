@@ -29,12 +29,15 @@ public class RedSalidaMC {
     }
     
     public void enviarMensaje(String mensajeEnviar) {
+        
+        System.out.println("RED SALIDA MC => Enviando mensaje: " + mensajeEnviar);
+        
         try {
-            DatagramPacket dp = new DatagramPacket(mensajeEnviar.getBytes(), mensajeEnviar.length(),group, port);
+            DatagramPacket dp = new DatagramPacket(mensajeEnviar.getBytes(), mensajeEnviar.length(),grupo, puertoMC);
 
             socketMC.send(dp);
         } catch (IOException ex) {
-            System.out.println("RED SALIDA TCP=> Error enviando el mensaje al servidor");
+            System.out.println("RED SALIDA MC=> Error enviando el mensaje al servidor");
         }
     }
 }

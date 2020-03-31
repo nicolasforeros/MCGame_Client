@@ -5,17 +5,46 @@
  */
 package co.edu.autonoma.MC.ui;
 
+import co.edu.autonoma.MC.cliente.elements.Cliente;
+import co.edu.autonoma.MC.juego.bases.GraphicContainer;
+import co.edu.autonoma.MC.juego.bases.Sprite;
+import co.edu.autonoma.MC.juego.elements.AccionesJugador;
+import co.edu.autonoma.MC.juego.elements.ChatWorld;
+import co.edu.autonoma.MC.juego.elements.Mundo;
+import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Manuela Cardona
  */
-public class MundoWindow extends javax.swing.JFrame implements MCGame{
+public class MundoWindow extends javax.swing.JFrame implements GraphicContainer{
 
+    private Mundo mundo;
+    private Cliente cliente;
+    private ChatWorld chat;
+    
     /**
      * Creates new form Principal
      */
     public MundoWindow() {
         initComponents();
+        
+        txtAreaChat.setLineWrap(true);
+        txtAreaChat.setWrapStyleWord(true);
+        
+        new SmartScroller(jScrollPane2);
+    }
+    
+    public void iniciarChat(){
+        this.chat = new ChatWorld(this, this.cliente.getEstadoJuego());
+        this.chat.start();
+    }
+    
+    public void mostrarMensajeChat(String mensaje){
+        this.txtAreaChat.append(mensaje+System.lineSeparator());
     }
 
     /**
@@ -27,127 +56,36 @@ public class MundoWindow extends javax.swing.JFrame implements MCGame{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelJugadores = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tableJugadores = new javax.swing.JTable();
-        labelJugadores = new javax.swing.JLabel();
-        labelImgJugador = new javax.swing.JLabel();
-        labelImgJugadora = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         panelMundo = new javax.swing.JPanel();
-        panelChat = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txtAreaChat = new javax.swing.JTextArea();
         txtFielMsjeEnviar = new javax.swing.JTextField();
         btnEnviar = new javax.swing.JButton();
         labelChat = new javax.swing.JLabel();
         labelImgChat = new javax.swing.JLabel();
+        labelImgJugador = new javax.swing.JLabel();
+        labelImgJugadora = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtAreaChat = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        panelJugadores.setBackground(new java.awt.Color(255, 255, 255));
-
-        tableJugadores.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Nombre", "Tamaño"
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
             }
-        ));
-        jScrollPane1.setViewportView(tableJugadores);
-
-        labelJugadores.setBackground(new java.awt.Color(255, 255, 255));
-        labelJugadores.setFont(new java.awt.Font("Segoe Script", 1, 24)); // NOI18N
-        labelJugadores.setForeground(new java.awt.Color(0, 153, 51));
-        labelJugadores.setText("Jugadores");
-
-        labelImgJugador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Jugador.png"))); // NOI18N
-
-        labelImgJugadora.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Jugadora.png"))); // NOI18N
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Para regalar vidas a los\n jugadores escriba en el chat:");
-        jScrollPane3.setViewportView(jTextArea1);
-
-        javax.swing.GroupLayout panelJugadoresLayout = new javax.swing.GroupLayout(panelJugadores);
-        panelJugadores.setLayout(panelJugadoresLayout);
-        panelJugadoresLayout.setHorizontalGroup(
-            panelJugadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelJugadoresLayout.createSequentialGroup()
-                .addGroup(panelJugadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelJugadoresLayout.createSequentialGroup()
-                        .addGroup(panelJugadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelJugadoresLayout.createSequentialGroup()
-                                .addGap(39, 39, 39)
-                                .addGroup(panelJugadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(panelJugadoresLayout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(labelImgJugador)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(labelImgJugadora))
-                                    .addComponent(labelJugadores)))
-                            .addGroup(panelJugadoresLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(panelJugadoresLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane3)))
-                .addContainerGap())
-        );
-        panelJugadoresLayout.setVerticalGroup(
-            panelJugadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelJugadoresLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labelJugadores)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelJugadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(labelImgJugador)
-                    .addComponent(labelImgJugadora))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
-        );
+        });
 
         panelMundo.setBackground(new java.awt.Color(0, 153, 51));
         panelMundo.setPreferredSize(new java.awt.Dimension(500, 500));
-
-        javax.swing.GroupLayout panelMundoLayout = new javax.swing.GroupLayout(panelMundo);
-        panelMundo.setLayout(panelMundoLayout);
-        panelMundoLayout.setHorizontalGroup(
-            panelMundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
-        );
-        panelMundoLayout.setVerticalGroup(
-            panelMundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        panelChat.setBackground(new java.awt.Color(255, 255, 255));
-
-        txtAreaChat.setColumns(20);
-        txtAreaChat.setRows(5);
-        jScrollPane2.setViewportView(txtAreaChat);
+        panelMundo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelMundoMouseClicked(evt);
+            }
+        });
+        panelMundo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                panelMundoKeyPressed(evt);
+            }
+        });
 
         btnEnviar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnEnviar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Enviar.png"))); // NOI18N
@@ -159,91 +97,196 @@ public class MundoWindow extends javax.swing.JFrame implements MCGame{
         });
 
         labelChat.setFont(new java.awt.Font("Segoe Script", 1, 24)); // NOI18N
-        labelChat.setForeground(new java.awt.Color(0, 153, 51));
+        labelChat.setForeground(new java.awt.Color(255, 255, 255));
         labelChat.setText("Chat");
 
         labelImgChat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Chat.png"))); // NOI18N
 
-        javax.swing.GroupLayout panelChatLayout = new javax.swing.GroupLayout(panelChat);
-        panelChat.setLayout(panelChatLayout);
-        panelChatLayout.setHorizontalGroup(
-            panelChatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelChatLayout.createSequentialGroup()
-                .addGroup(panelChatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelChatLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(panelChatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2)
-                            .addGroup(panelChatLayout.createSequentialGroup()
-                                .addComponent(txtFielMsjeEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnEnviar))))
-                    .addGroup(panelChatLayout.createSequentialGroup()
-                        .addGap(67, 67, 67)
+        labelImgJugador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Jugador.png"))); // NOI18N
+
+        labelImgJugadora.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Jugadora.png"))); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("<html>\n\nPARA REGALAR VIDAS ESCRIBE EN EL CHAT EL SIGUIENTE COMANDO: \n<br>\n<br>\n<strong>regalarvida::nombreusuario</strong>\n\n</html>");
+        jLabel1.setFocusable(false);
+
+        txtAreaChat.setEditable(false);
+        txtAreaChat.setColumns(20);
+        txtAreaChat.setRows(5);
+        txtAreaChat.setFocusable(false);
+        jScrollPane2.setViewportView(txtAreaChat);
+
+        javax.swing.GroupLayout panelMundoLayout = new javax.swing.GroupLayout(panelMundo);
+        panelMundo.setLayout(panelMundoLayout);
+        panelMundoLayout.setHorizontalGroup(
+            panelMundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMundoLayout.createSequentialGroup()
+                .addContainerGap(543, Short.MAX_VALUE)
+                .addGroup(panelMundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMundoLayout.createSequentialGroup()
+                        .addGroup(panelMundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMundoLayout.createSequentialGroup()
+                                .addComponent(txtFielMsjeEnviar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnEnviar))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMundoLayout.createSequentialGroup()
+                                .addComponent(labelImgJugador)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(labelImgJugadora)
+                                .addGap(24, 24, 24)))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMundoLayout.createSequentialGroup()
+                        .addComponent(labelImgChat)
+                        .addGap(18, 18, 18)
                         .addComponent(labelChat, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(labelImgChat)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(188, 188, 188))))
         );
-        panelChatLayout.setVerticalGroup(
-            panelChatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelChatLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(panelChatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelMundoLayout.setVerticalGroup(
+            panelMundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMundoLayout.createSequentialGroup()
+                .addGroup(panelMundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelMundoLayout.createSequentialGroup()
+                        .addContainerGap(12, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelMundoLayout.createSequentialGroup()
+                        .addGroup(panelMundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelMundoLayout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(labelImgJugadora))
+                            .addGroup(panelMundoLayout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(labelImgJugador)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(34, 34, 34)
+                .addGroup(panelMundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelImgChat)
                     .addComponent(labelChat))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelChatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFielMsjeEnviar)
+                .addGroup(panelMundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFielMsjeEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEnviar))
-                .addGap(24, 24, 24))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panelJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelMundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelChat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(4, 4, 4))
+            .addComponent(panelMundo, javax.swing.GroupLayout.DEFAULT_SIZE, 1053, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelChat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                .addComponent(panelMundo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
-                .addComponent(panelJugadores, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(panelMundo, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formKeyPressed
+
+    private void panelMundoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_panelMundoKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_UP |
+            evt.getKeyCode() == KeyEvent.VK_DOWN |
+            evt.getKeyCode() == KeyEvent.VK_LEFT |
+            evt.getKeyCode() == KeyEvent.VK_RIGHT)
+        {
+            AccionesJugador acciones = mundo.keyPressed(evt.getKeyCode());
+
+            if(acciones.isMovimiento()){
+
+                if(!this.cliente.enviarMensajeActualizarJugador()){
+                    JOptionPane.showMessageDialog(this, "GAME OVER!");
+                    this.cliente.enviarMensajeGameOver();
+                    this.cliente.cerrarConexiones();
+                    this.dispose();
+                    return;
+                }
+
+                if(acciones.isPelea()){
+                    this.cliente.enviarMensajePelea(acciones.getNombreRivalPelea());
+                }
+            }
+        }
+
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            this.txtFielMsjeEnviar.requestFocusInWindow();
+        }
+    }//GEN-LAST:event_panelMundoKeyPressed
+
+    private void panelMundoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelMundoMouseClicked
+        // TODO add your handling code here:
+        this.panelMundo.requestFocusInWindow();
+    }//GEN-LAST:event_panelMundoMouseClicked
+
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
         // TODO add your handling code here:
+        this.cliente.enviarMensajeChat(txtFielMsjeEnviar.getText());
     }//GEN-LAST:event_btnEnviarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEnviar;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel labelChat;
     private javax.swing.JLabel labelImgChat;
     private javax.swing.JLabel labelImgJugador;
     private javax.swing.JLabel labelImgJugadora;
-    private javax.swing.JLabel labelJugadores;
-    private javax.swing.JPanel panelChat;
-    private javax.swing.JPanel panelJugadores;
     private javax.swing.JPanel panelMundo;
-    private javax.swing.JTable tableJugadores;
     private javax.swing.JTextArea txtAreaChat;
     private javax.swing.JTextField txtFielMsjeEnviar;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g); 
+    
+        if(mundo != null){
+            mundo.paint(g);
+        }
+    }
+    
+    @Override
+    public void refresh() {
+        this.repaint();
+    }
+
+    @Override
+    public Rectangle getBoundaries() {
+        return this.getBounds();
+    }
+
+    public Mundo getMundo() {
+        return mundo;
+    }
+
+    public void setMundo(Mundo mundo) {
+        this.mundo = mundo;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    @Override
+    public boolean addSprite(Sprite sprite) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void removeSprite(Sprite sprite) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

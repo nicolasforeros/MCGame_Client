@@ -6,6 +6,7 @@
 package co.edu.autonoma.MC.cliente.elements;
 
 import co.edu.autonoma.MC.juego.bases.PPTGame;
+import co.edu.autonoma.MC.juego.elements.Jugador;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -18,9 +19,11 @@ import org.json.simple.parser.ParseException;
  */
 public class InterpreteMensajesTCP {
     
+    private Jugador jugadorLocal;
     private String nombreJugador;
     private PPTGame juego;
     private JSONParser parser;
+    private Cliente cliente;
 
     public InterpreteMensajesTCP() {
         parser = new JSONParser();
@@ -112,16 +115,36 @@ public class InterpreteMensajesTCP {
                 
             case PPTGame.ESTADO_J1OK_J2OK:
                 System.out.println("INTERPRETEMEN=> Estado j1ok j2ok");
-                if (jugador1!=null && jugador1.equalsIgnoreCase(this.nombreJugador))
+                if (jugador1!=null && jugador1.equalsIgnoreCase(this.nombreJugador)){
                     this.juego.terminarJuego(ganador,jugada1,jugada2);
+                }
                 
-                if (jugador2!=null && jugador2.equalsIgnoreCase(this.nombreJugador))
+                if (jugador2!=null && jugador2.equalsIgnoreCase(this.nombreJugador)){
                     this.juego.terminarJuego(ganador,jugada2,jugada1);
+                }
+                
+                if(jugadorLocal.getUsername().equals(ganador)){
+                    jugadorLocal.grow();
+                }else{
+                    if(!ganador.equals("empate"))
+                        jugadorLocal.shrink();
+                }
+                
+                cliente.enviarMensajeActualizarJugador();
+                
                 break;
         }
     }
 
     public void setNombreJugador(String nombreJugador) {
         this.nombreJugador = nombreJugador;
+    }
+    
+    public void setJugadorLocal(Jugador jugadorLocal){
+        this.jugadorLocal = jugadorLocal;
+    }
+    
+    public void setCliente(Cliente cliente){
+        this.cliente = cliente;
     }
 }

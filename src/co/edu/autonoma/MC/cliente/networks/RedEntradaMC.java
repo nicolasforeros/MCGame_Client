@@ -5,8 +5,8 @@
  */
 package co.edu.autonoma.MC.cliente.networks;
 
-import co.edu.autonoma.MC.juego.bases.PPTGame;
-import java.io.DataInputStream;
+import co.edu.autonoma.MC.cliente.elements.InterpreteMensajesMC;
+import co.edu.autonoma.MC.juego.elements.EstadoJuego;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.MulticastSocket;
@@ -21,8 +21,8 @@ public class RedEntradaMC extends Thread{
     
     private String nombreJugador;
     private MulticastSocket socketMC;
-    private MCGame juegoMC;
     private InterpreteMensajesMC interpreteMensajes;
+    private EstadoJuego estadoJuego;
     
     private DatagramPacket recv;
     
@@ -37,10 +37,9 @@ public class RedEntradaMC extends Thread{
     public void run(){
         
         System.out.println("RED ENTRADA MC => empezando hilo");
-        this.interpreteMensajes.setJuego(this.juegoMC);
-        this.interpreteMensajes.setNombreJugador(this.nombreJugador);
+        this.interpreteMensajes.setEstadoJuego(this.estadoJuego);
         
-        byte[] buffer = new byte[1000];
+        byte[] buffer = new byte[2000];
         String temp;
         
         while(true){
@@ -66,13 +65,13 @@ public class RedEntradaMC extends Thread{
     public void setSocketMC(MulticastSocket socketMC) {
         this.socketMC = socketMC;
     }
-
-    public void setJuegoMC(MCGame juegoMC) {
-        this.juegoMC = juegoMC;
-    }
     
     public void setNombreJugador(String nombre){
         this.nombreJugador = nombre;
+    }
+
+    public void setEstadoJuego(EstadoJuego estadoJuego) {
+        this.estadoJuego = estadoJuego;
     }
     
 }

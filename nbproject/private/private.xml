@@ -2,6 +2,21 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/nikof/OneDrive/Documentos/NetBeansProjects/MulticastJuego/src/co/edu/autonoma/MC/cliente/elements/InterpreteMensajesTCP.java</file>
+            <file>file:/C:/Users/nikof/OneDrive/Documentos/NetBeansProjects/MulticastJuego/src/co/edu/autonoma/MC/juego/elements/Jugador.java</file>
+            <file>file:/C:/Users/nikof/OneDrive/Documentos/NetBeansProjects/MulticastJuego/src/co/edu/autonoma/MC/cliente/networks/RedEntradaTCP.java</file>
+            <file>file:/C:/Users/nikof/OneDrive/Documentos/NetBeansProjects/MulticastJuego/src/co/edu/autonoma/MC/ui/LoginWindow.java</file>
+            <file>file:/C:/Users/nikof/OneDrive/Documentos/NetBeansProjects/MulticastJuego/src/co/edu/autonoma/MC/juego/elements/PPT.java</file>
+            <file>file:/C:/Users/nikof/OneDrive/Documentos/NetBeansProjects/MulticastJuego/src/co/edu/autonoma/MC/cliente/elements/Cliente.java</file>
+            <file>file:/C:/Users/nikof/OneDrive/Documentos/NetBeansProjects/MulticastJuego/src/co/edu/autonoma/MC/Main.java</file>
+            <file>file:/C:/Users/nikof/OneDrive/Documentos/NetBeansProjects/MulticastJuego/src/co/edu/autonoma/MC/ui/MundoWindow.java</file>
+            <file>file:/C:/Users/nikof/OneDrive/Documentos/NetBeansProjects/MulticastJuego/src/co/edu/autonoma/MC/cliente/elements/InterpreteMensajesMC.java</file>
+            <file>file:/C:/Users/nikof/OneDrive/Documentos/NetBeansProjects/MulticastJuego/src/co/edu/autonoma/MC/cliente/elements/EscritorMensajesMC.java</file>
+            <file>file:/C:/Users/nikof/OneDrive/Documentos/NetBeansProjects/MulticastJuego/src/co/edu/autonoma/MC/juego/bases/PPTGame.java</file>
+            <file>file:/C:/Users/nikof/OneDrive/Documentos/NetBeansProjects/MulticastJuego/src/co/edu/autonoma/MC/ui/PPTWindow.java</file>
+            <file>file:/C:/Users/nikof/OneDrive/Documentos/NetBeansProjects/MulticastJuego/src/co/edu/autonoma/MC/cliente/elements/EscritorMensajesTCP.java</file>
+            <file>file:/C:/Users/nikof/OneDrive/Documentos/NetBeansProjects/MulticastJuego/src/co/edu/autonoma/MC/juego/elements/EstadoJuego.java</file>
+        </group>
     </open-files>
 </project-private>

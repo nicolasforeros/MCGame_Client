@@ -19,8 +19,9 @@ public abstract class SpriteContainer extends Sprite implements GraphicContainer
         super(x, y, height, width);
         
         sprites = new ArrayList<>();
-    }   
+    }
     
+    @Override
     public boolean addSprite(Sprite sprite)
     {
         return sprites.add(sprite);
@@ -30,7 +31,8 @@ public abstract class SpriteContainer extends Sprite implements GraphicContainer
     {
         sprites.remove(index);
     }
-
+    
+    @Override
     public void removeSprite(Sprite sprite)
     {
         sprites.remove(sprite);

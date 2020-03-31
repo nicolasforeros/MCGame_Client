@@ -14,4 +14,6 @@ import java.awt.Rectangle;
 public interface GraphicContainer {
     public void refresh();
     public Rectangle getBoundaries();
+    public boolean addSprite(Sprite sprite);
+    public void removeSprite(Sprite sprite);
 }

@@ -5,6 +5,7 @@
  */
 package co.edu.autonoma.MC.ui;
 
+import co.edu.autonoma.MC.cliente.elements.Cliente;
 import co.edu.autonoma.MC.juego.bases.PPTGame;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -292,7 +293,7 @@ public class PPTWindow extends javax.swing.JFrame implements PPTGame{
     }//GEN-LAST:event_btnTijeraActionPerformed
 
     public void iniciarEntrada(){   
-        this.cliente.iniciarRedEntrada(this);
+        this.cliente.iniciarEntradaTCP(this);
         this.cliente.enviarMensajeNuevaPartida();
     }
     
@@ -385,6 +386,8 @@ public class PPTWindow extends javax.swing.JFrame implements PPTGame{
     @Override
     public void cerrarPartida() {
         JOptionPane.showMessageDialog(this, "Se ha cerrado la sesión de juego");
+        
+        this.cliente.setPeleando(false);
         
         this.dispose();
     }
