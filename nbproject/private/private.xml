@@ -2,6 +2,7 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+
         <group>
             <file>file:/C:/Users/nikof/OneDrive/Documentos/NetBeansProjects/MulticastJuego/src/co/edu/autonoma/MC/cliente/elements/InterpreteMensajesTCP.java</file>
             <file>file:/C:/Users/nikof/OneDrive/Documentos/NetBeansProjects/MulticastJuego/src/co/edu/autonoma/MC/juego/elements/Jugador.java</file>
@@ -18,5 +19,7 @@
             <file>file:/C:/Users/nikof/OneDrive/Documentos/NetBeansProjects/MulticastJuego/src/co/edu/autonoma/MC/cliente/elements/EscritorMensajesTCP.java</file>
             <file>file:/C:/Users/nikof/OneDrive/Documentos/NetBeansProjects/MulticastJuego/src/co/edu/autonoma/MC/juego/elements/EstadoJuego.java</file>
         </group>
+
+        <group/>
     </open-files>
 </project-private>
